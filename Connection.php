@@ -139,7 +139,7 @@ class Connection extends Component
         if ($status === 404) {
             throw new InvalidConfigException('Error: url 404');
         } else {
-            $response = Json::decode(curl_exec($this->_connect));
+            $response = Json::decode($response);
         }
         if (isset($response['error'])) {
             throw new InvalidConfigException($response['error']);
