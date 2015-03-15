@@ -190,4 +190,12 @@ class ActiveRecord extends BaseActiveRecord
 
         return true;
     }
+
+    public static function deleteAll($condition = [])
+    {
+        foreach ($condition as $pk) {
+            self::getDb()->createCommand()->deleteModel(static::tableName(), $pk);
+        }
+        return true;
+    }
 }

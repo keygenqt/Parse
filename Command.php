@@ -57,6 +57,12 @@ class Command extends Component
         }
         return !empty($rows);
     }
+    
+    public function deleteModel($table, $id)
+    {
+        $url = ['classes', $table, ['objectId' => $id]];
+        $this->db->delete($url);
+    }
 
     public function insert($calss, $columns)
     {
