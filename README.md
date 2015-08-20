@@ -3,6 +3,8 @@ Parse Query and ActiveRecord for Yii 2
 
 (Beta version. Will have problems, please contact: keygenqt@gmail.com)
 
+Full support parse api is not implemented.
+
 This extension provides the integration for the Yii2 framework.
 It includes basic querying/search support and also implements the `ActiveRecord` pattern that allows you to store active
 records in [parse.com](https://parse.com/).
