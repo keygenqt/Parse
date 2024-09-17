@@ -77,7 +77,21 @@ class QueryBuilder extends \yii\base\Object
                         }
                         $parts = [$query->where[1] => $query->where[2]];
                     }
-                }
+                } elseif ($query->where[0] == '>') {
+                        $field_type  = isset($query->where[3]) ? $query->where[3] : 'numeric';
+                        $field_name  = $query->where[1];
+                        $field_op    = '$gte';
+                        switch ($field_type) {
+                            case 'date':
+                                $field_value = date('Y-m-d\TH:i:s', strtotime($query->where[2]));
+                                $parts =[$field_name => [$field_op => ['__type' => 'Date', 'iso' => $field_value]]];
+                                break;
+                            default:
+                                $field_value = $query->where[2];
+                                $parts =[$field_name => [$field_op => $field_value]];
+                                break;
+                        }
+                    }
             } else {
                 $parts = $query->where;
             }
